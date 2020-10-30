@@ -2,5 +2,10 @@ Revision history for Hash-LRU
 
 {{$NEXT}}
 
+0.0.2  2020-10-30T13:44:26+01:00
+    - Simplify exporting of trait candidates
+    - Add GitHub workflows testing
+    - Update copyright year
+
 0.0.1  2018-07-25T14:27:56+02:00
     - Initial version

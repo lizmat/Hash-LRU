@@ -1,16 +1,6 @@
 use v6.c;
 
-# Since we cannot export a proto sub trait_mod:<is> with "is export", we
-# need to do this manually with an EXPORT sub.  So we create a hash here
-# to be set in compilation of the mainline and then return that in the
-# EXPORT sub.
-my %EXPORT;
-
-# Save the original trait_mod:<is> candidates, so we can pass on through
-# all of the trait_mod:<is>'s that cannot be handled here.
-BEGIN my $original_trait_mod_is = &trait_mod:<is>;
-
-module Hash::LRU:ver<0.0.1>:auth<cpan:ELIZABETH> {
+module Hash::LRU:ver<0.0.2>:auth<cpan:ELIZABETH> {
 
     # The basic logic for keeping LRU data up-to-date
     my role basic {
@@ -88,11 +78,8 @@ module Hash::LRU:ver<0.0.1>:auth<cpan:ELIZABETH> {
         }
     }
 
-    # Manually mark this proto for export
-    %EXPORT<&trait_mod:<is>> := proto sub trait_mod:<is>(|) {*}
-
     # Handle the "is LRU" / is LRU(Bool:D) cases
-    multi sub trait_mod:<is>(Variable:D \v, Bool:D :$LRU!) {
+    multi sub trait_mod:<is>(Variable:D \v, Bool:D :$LRU!) is export {
         die "Can only apply 'is LRU' on a Hash, not a {v.var.WHAT}"
           unless v.var.WHAT ~~ Hash;
         my $name = v.var.^name;
@@ -106,7 +93,7 @@ module Hash::LRU:ver<0.0.1>:auth<cpan:ELIZABETH> {
     }
 
     # Handle the "is LRU(elements => N)" case
-    multi sub trait_mod:<is>(Variable:D \v, :%LRU!) {
+    multi sub trait_mod:<is>(Variable:D \v, :%LRU!) is export {
         die "Can only apply 'is LRU' on a Hash, not a {v.var.WHAT}"
           unless v.var.WHAT ~~ Hash;
         my $name = v.var.^name;
@@ -121,12 +108,7 @@ module Hash::LRU:ver<0.0.1>:auth<cpan:ELIZABETH> {
         }
         v.var.WHAT.^set_name("$name\(LRU)");
     }
-
-    # Make sure we handle all of the standard traits correctly
-    multi sub trait_mod:<is>(|c) { $original_trait_mod_is(|c) }
 }
-
-sub EXPORT { %EXPORT }
 
 =begin pod
 
@@ -163,7 +145,7 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018 Elizabeth Mattijsen
+Copyright 2018,2020 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.
