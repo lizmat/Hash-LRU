@@ -114,11 +114,11 @@ module Hash::LRU:ver<0.0.2>:auth<cpan:ELIZABETH> {
 
 =head1 NAME
 
-Hash::LRU - trait for limiting number of keys in hashes
+Hash::LRU - trait for limiting number of keys in hashes by usage
 
 =head1 SYNOPSIS
 
-  use Hash::LRU;
+  use Hash::LRU;  # Least Recently Used
 
   my %h is LRU;   # defaults to elements => 100
 

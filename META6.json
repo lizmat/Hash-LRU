@@ -7,7 +7,7 @@
   ],
   "depends": [
   ],
-  "description": "trait for limiting number of keys in hashes",
+  "description": "trait for limiting number of keys in hashes by usage",
   "license": "Artistic-2.0",
   "name": "Hash::LRU",
   "perl": "6.c",
