@@ -97,14 +97,21 @@ module Hash::LRU:ver<0.0.2>:auth<cpan:ELIZABETH> {
         die "Can only apply 'is LRU' on a Hash, not a {v.var.WHAT}"
           unless v.var.WHAT ~~ Hash;
         my $name = v.var.^name;
-        with %LRU<elements> {
-            trait_mod:<does>(v, v.var.keyof =:= Str(Any)
-              ?? limit-given-hash[$_]
-              !! limit-given-object-hash[$_]
-            );
+
+        if %LRU<elements>:exists {
+            with %LRU<elements> {
+                trait_mod:<does>(v, v.var.keyof =:= Str(Any)
+                  ?? limit-given-hash[$_]
+                  !! limit-given-object-hash[$_]
+                );
+            }
+            else {
+                die "Cannot use an undefined value for 'elements' in 'is LRU'. "
+                    ~ 'Did you try to set it at runtime?';
+            }
         }
-        elsif %LRU.keys.sort -> @huh {
-            die "Don't know what to do with '@keys' in 'is LRU'";
+        elsif %LRU.keys.sort -> @keys {
+            die "Don't know what to do with '{ @keys }' in 'is LRU'";
         }
         v.var.WHAT.^set_name("$name\(LRU)");
     }
