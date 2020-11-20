@@ -1,4 +1,4 @@
-use v6.*;
+use v6.d;
 
 module Hash::LRU:ver<0.0.3>:auth<cpan:ELIZABETH> {
 
