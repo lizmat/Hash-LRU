@@ -2,6 +2,10 @@ Revision history for Hash-LRU
 
 {{$NEXT}}
 
+0.0.3  2020-11-20T18:56:57+01:00
+    - Upgrade to highest possible Raku version
+    - Improve error reporting, JJ Atria++ for that
+
 0.0.2  2020-10-30T13:44:26+01:00
     - Simplify exporting of trait candidates
     - Add GitHub workflows testing

@@ -1,6 +1,6 @@
-use v6.c;
+use v6.*;
 
-module Hash::LRU:ver<0.0.2>:auth<cpan:ELIZABETH> {
+module Hash::LRU:ver<0.0.3>:auth<cpan:ELIZABETH> {
 
     # The basic logic for keeping LRU data up-to-date
     my role basic {
@@ -129,7 +129,7 @@ Hash::LRU - trait for limiting number of keys in hashes by usage
 
   my %h is LRU;   # defaults to elements => 100
 
-  my %h is LRU(elements => 42);
+  my %h is LRU(elements => 42);  # note: value must be known at compile time!
 
   my %h{Any} is LRU;  # object hashes also supported
 
@@ -159,4 +159,4 @@ the Artistic License 2.0.
 
 =end pod
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

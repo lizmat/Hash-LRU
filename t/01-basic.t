@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 
 use Hash::LRU;
@@ -31,4 +31,4 @@ for
     nok %h<a>:exists, "is key 'a' removed for $what";
 }
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

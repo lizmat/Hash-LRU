@@ -1,16 +1,16 @@
 NAME
 ====
 
-Hash::LRU - trait for limiting number of keys in hashes
+Hash::LRU - trait for limiting number of keys in hashes by usage
 
 SYNOPSIS
 ========
 
-    use Hash::LRU;
+    use Hash::LRU;  # Least Recently Used
 
     my %h is LRU;   # defaults to elements => 100
 
-    my %h is LRU(elements => 42);
+    my %h is LRU(elements => 42);  # note: value must be known at compile time!
 
     my %h{Any} is LRU;  # object hashes also supported
 
