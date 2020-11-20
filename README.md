@@ -21,6 +21,21 @@ Hash::LRU provides a `is LRU` trait on `Hash`es as an easy way to limit the numb
 
 Both "normal" as well as object hashes are supported.
 
+EXAMPLE
+=======
+
+    use Hash::LRU;
+
+    my %h is LRU(elements => 3);
+
+    %h<name>       = "Alex";
+    %h<language>   = "Raku";
+    %h<occupation> = "devops";
+    %h<location>   = "Russia";
+
+    say %h.raku;
+    # {:location("Russia"), :occupation("devops"), :language("Raku")}
+
 AUTHOR
 ======
 

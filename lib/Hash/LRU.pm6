@@ -1,6 +1,6 @@
 use v6.d;
 
-module Hash::LRU:ver<0.0.3>:auth<cpan:ELIZABETH> {
+module Hash::LRU:ver<0.0.4>:auth<cpan:ELIZABETH> {
 
     # The basic logic for keeping LRU data up-to-date
     my role basic {
@@ -142,6 +142,20 @@ would exceed the limit, the least recently used key is removed from the
 C<Hash>.
 
 Both "normal" as well as object hashes are supported.
+
+=head1 EXAMPLE
+
+  use Hash::LRU;
+
+  my %h is LRU(elements => 3);
+
+  %h<name>       = "Alex";
+  %h<language>   = "Raku";
+  %h<occupation> = "devops";
+  %h<location>   = "Russia";
+
+  say %h.raku;
+  # {:location("Russia"), :occupation("devops"), :language("Raku")}
 
 =head1 AUTHOR
 
