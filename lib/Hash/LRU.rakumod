@@ -1,6 +1,6 @@
 use v6.d;
 
-module Hash::LRU:ver<0.0.4>:auth<cpan:ELIZABETH> {
+module Hash::LRU:ver<0.0.5>:auth<zef:lizmat> {
 
     # The basic logic for keeping LRU data up-to-date
     my role basic {
@@ -159,14 +159,14 @@ Both "normal" as well as object hashes are supported.
 
 =head1 AUTHOR
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Hash-LRU . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018,2020 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.
