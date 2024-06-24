@@ -8,13 +8,15 @@ Hash::LRU - trait for limiting number of keys in hashes by usage
 SYNOPSIS
 ========
 
-    use Hash::LRU;  # Least Recently Used
+```raku
+use Hash::LRU;  # Least Recently Used
 
-    my %h is LRU;   # defaults to elements => 100
+my %h is LRU;   # defaults to elements => 100
 
-    my %h is LRU(elements => 42);  # note: value must be known at compile time!
+my %h is LRU(elements => 42);  # note: value must be known at compile time!
 
-    my %h{Any} is LRU;  # object hashes also supported
+my %h{Any} is LRU;  # object hashes also supported
+```
 
 DESCRIPTION
 ===========
@@ -26,17 +28,19 @@ Both "normal" as well as object hashes are supported.
 EXAMPLE
 =======
 
-    use Hash::LRU;
+```raku
+use Hash::LRU;
 
-    my %h is LRU(elements => 3);
+my %h is LRU(elements => 3);
 
-    %h<name>       = "Alex";
-    %h<language>   = "Raku";
-    %h<occupation> = "devops";
-    %h<location>   = "Russia";
+%h<name>       = "Alex";
+%h<language>   = "Raku";
+%h<occupation> = "devops";
+%h<location>   = "Russia";
 
-    say %h.raku;
-    # {:location("Russia"), :occupation("devops"), :language("Raku")}
+say %h.raku;
+# {:location("Russia"), :occupation("devops"), :language("Raku")}
+```
 
 AUTHOR
 ======
@@ -45,10 +49,12 @@ Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Hash-LRU . Comments and Pull Requests are welcome.
 
+If you like this module, or what I’m doing more generally, committing to a [small sponsorship](https://github.com/sponsors/lizmat/) would mean a great deal to me!
+
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

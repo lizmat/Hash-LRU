@@ -1,6 +1,6 @@
 use v6.d;
 
-module Hash::LRU:ver<0.0.5>:auth<zef:lizmat> {
+module Hash::LRU {
 
     # The basic logic for keeping LRU data up-to-date
     my role basic {
@@ -125,13 +125,17 @@ Hash::LRU - trait for limiting number of keys in hashes by usage
 
 =head1 SYNOPSIS
 
-  use Hash::LRU;  # Least Recently Used
+=begin code :lang<raku>
 
-  my %h is LRU;   # defaults to elements => 100
+use Hash::LRU;  # Least Recently Used
 
-  my %h is LRU(elements => 42);  # note: value must be known at compile time!
+my %h is LRU;   # defaults to elements => 100
 
-  my %h{Any} is LRU;  # object hashes also supported
+my %h is LRU(elements => 42);  # note: value must be known at compile time!
+
+my %h{Any} is LRU;  # object hashes also supported
+
+=end code
 
 =head1 DESCRIPTION
 
@@ -145,17 +149,21 @@ Both "normal" as well as object hashes are supported.
 
 =head1 EXAMPLE
 
-  use Hash::LRU;
+=begin code :lang<raku>
 
-  my %h is LRU(elements => 3);
+use Hash::LRU;
 
-  %h<name>       = "Alex";
-  %h<language>   = "Raku";
-  %h<occupation> = "devops";
-  %h<location>   = "Russia";
+my %h is LRU(elements => 3);
 
-  say %h.raku;
-  # {:location("Russia"), :occupation("devops"), :language("Raku")}
+%h<name>       = "Alex";
+%h<language>   = "Raku";
+%h<occupation> = "devops";
+%h<location>   = "Russia";
+
+say %h.raku;
+# {:location("Russia"), :occupation("devops"), :language("Raku")}
+
+=end code
 
 =head1 AUTHOR
 
@@ -164,9 +172,13 @@ Elizabeth Mattijsen <liz@raku.rocks>
 Source can be located at: https://github.com/lizmat/Hash-LRU . Comments and
 Pull Requests are welcome.
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2020, 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under
 the Artistic License 2.0.
