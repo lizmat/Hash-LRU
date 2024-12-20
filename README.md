@@ -42,6 +42,21 @@ say %h.raku;
 # {:location("Russia"), :occupation("devops"), :language("Raku")}
 ```
 
+COMPATIBILITY
+=============
+
+Cache::LRU
+----------
+
+```raku
+#my $cache = Cache::LRU.new(size => 3);
+my $cache = my % is LRU(elements  => 3);
+```
+
+If your code depended on the now obsolete `Cache::LRU` module, you can use this module instead provided the cache size is known at compile time.
+
+In that case, the above statement change is enough to keep your code working using a maintained module.
+
 AUTHOR
 ======
 

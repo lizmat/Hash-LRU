@@ -18,6 +18,12 @@ my role basic {
         self!SEEN-KEY($_) for self.keys;
         self
     }
+
+    # Cache::LRU compatibility
+    method set($key, $value) { self.ASSIGN-KEY($key, $value) }
+    method get($key)         { self.AT-KEY($key)             }
+    method remove($key)      { self.DELETE-KEY($key)         }
+    method clear()           { self = ()                     }
 }
 
 # The role to be applied when a specific limit is given for hashes
@@ -159,6 +165,24 @@ say %h.raku;
 # {:location("Russia"), :occupation("devops"), :language("Raku")}
 
 =end code
+
+=head1 COMPATIBILITY
+
+=head2 Cache::LRU
+
+=begin code :lang<raku>
+
+#my $cache = Cache::LRU.new(size => 3);
+my $cache = my % is LRU(elements  => 3);
+
+=end code
+
+If your code depended on the now obsolete C<Cache::LRU> module, you
+can use this module instead provided the cache size is known at
+compile time.
+
+In that case, the above statement change is enough to keep your code
+working using a maintained module.
 
 =head1 AUTHOR
 
