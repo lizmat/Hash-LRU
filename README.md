@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Hash-LRU/workflows/test/badge.svg)](https://github.com/lizmat/Hash-LRU/actions)
+[![Actions Status](https://github.com/lizmat/Hash-LRU/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/Hash-LRU/actions) [![Actions Status](https://github.com/lizmat/Hash-LRU/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/Hash-LRU/actions) [![Actions Status](https://github.com/lizmat/Hash-LRU/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/Hash-LRU/actions)
 
 NAME
 ====
